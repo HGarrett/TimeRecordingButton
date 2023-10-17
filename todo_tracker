@@ -1,0 +1,6 @@
+Functionality
+- uart interface can copy data from device and report battery state
+- uart FW update
+
+Documentation
+- add docstrings

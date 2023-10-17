@@ -13,6 +13,15 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+      <itemPath>todo_tracker</itemPath>
+      <itemPath>config_PIC16F18114.c</itemPath>
+      <itemPath>config_PIC16F18114.h</itemPath>
+      <itemPath>eeprom_access.c</itemPath>
+      <itemPath>eeprom_access.h</itemPath>
+      <itemPath>timestamp.c</itemPath>
+      <itemPath>timestamp.h</itemPath>
+      <itemPath>led_flash.c</itemPath>
+      <itemPath>led_flash.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -25,7 +34,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC16F15313</targetDevice>
+        <targetDevice>PIC16F18114</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
@@ -34,7 +43,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.19.363"/>
+        <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.21.368"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
