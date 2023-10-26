@@ -23,7 +23,7 @@ extern "C" {
 #pragma config CSWEN    = 1        // Clock Switch Enable (Writing to NOSC and NDIV is allowed)
 #pragma config CLKOUTEN = 1        // Clock Out Enable (CLKOUT function is disabled; I/O function on CLKOUT pin)
 #pragma config RSTOSC   = 0x05     // Power-up Default Value for the NOSC/COSC bits (LFINTOSC)
-#pragma config FEXTOSC  = 0        // External Oscillator Mode Selection (LP (crystal oscillator) 32 kHz)
+#pragma config FEXTOSC  = 0x04     // External Oscillator Mode Selection (Oscillator not enabled)
 
 // CONFIG2
 #pragma config DEBUG     = 1    // Debugger Enable (Background debugger disabled)
@@ -77,7 +77,7 @@ extern "C" {
 #define MS_DELAY_INTERVAL       100  // delay in ms used between loops, 100 msec = 0.1 sec
 #define LOOP_COUNT              (MS_BUTTON_HOLD_INTERVAL/MS_DELAY_INTERVAL)
 
-#define MS_LED_FLASH_INTERVAL   60000  // delay in ms used to flash the LED on successful timestamp save
+#define MS_LED_FLASH_INTERVAL   500  // delay in ms used to flash the LED on successful timestamp save
 
 /***********************
  * Function Definitions

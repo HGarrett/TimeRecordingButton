@@ -31,6 +31,8 @@ void Timestamp_Save(uint8_t timer_bits_high, uint8_t timer_bits_low) {
     EEPROM_WriteByte(current_timestamp_list_pointer, timer_bits_low);
     EEPROM_WriteByte(current_timestamp_list_pointer++, timer_bits_high);
     
+    current_timestamp_list_pointer++;
+    
     // write new end address to TIMESTAMP_END_ADDRESS_POINTER
     EEPROM_WriteByte(TIMESTAMP_CURRENT_ADDRESS_POINTER, current_timestamp_list_pointer);
     

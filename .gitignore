@@ -43,6 +43,9 @@ dist/*
 *.su
 *.idb
 *.pdb
+debug/*
+*.log
+*.log.inx
 
 # Kernel Module Compile Results
 *.mod*
@@ -52,3 +55,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# MPLab Private Filles
+nbproject/private/*
