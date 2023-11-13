@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PIC16F18114")(type "KiCad")(uri "C:/Users/hilla/Downloads/ul_PIC16F18114-I-P/KiCADv6/2023-11-09_22-24-16.kicad_sym")(options "")(descr ""))
+  (lib (name "PIC16F18114-SN")(type "KiCad")(uri "C:/Users/hilla/Downloads/ul_PIC16F18114-I-SN/KiCADv6/2023-11-10_22-28-17.kicad_sym")(options "")(descr ""))
+)
