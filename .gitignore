@@ -56,5 +56,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# MPLab Private Filles
-nbproject/private/*
+# MPLab Private Files
+nbproject/private/
+
+# KiCAD Private Files
+KiCAD_EDA/~TimeRecordingButton.kicad_sch.lck
+KiCAD_EDA/TimeRecordingButton-backups/

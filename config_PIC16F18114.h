@@ -61,7 +61,7 @@ extern "C" {
 /******************
  * Timer frequency
  ******************/
-#define _XTAL_FREQ      31000 // LFINTOSC mode, 31kHz, this is used by the __delay_ms(xx) and __delay_us(xx) functions
+#define _XTAL_FREQ 31000 // LFINTOSC mode, 31kHz, this is used by the __delay_ms(xx) and __delay_us(xx) functions
 
 /*******************************
  * LED and Button Configuration
@@ -73,11 +73,15 @@ extern "C" {
 #define BUTTON_DOWN PORTAbits.RA4
 #define BUTTON_UP   !(PORTAbits.RA4)
 
-#define MS_BUTTON_HOLD_INTERVAL 3000 // how long user needs to hold button to save timestamp, 3000 msec = 3 sec
 #define MS_DELAY_INTERVAL       100  // delay in ms used between loops, 100 msec = 0.1 sec
-#define LOOP_COUNT              (MS_BUTTON_HOLD_INTERVAL/MS_DELAY_INTERVAL)
+    
+#define MS_BUTTON_HOLD_INTERVAL 3000 // how long user needs to hold button to save timestamp, 3000 msec = 3 sec
+#define BUTTON_LOOP_COUNT       (MS_BUTTON_HOLD_INTERVAL/MS_DELAY_INTERVAL)
 
-#define MS_LED_FLASH_INTERVAL   500  // delay in ms used to flash the LED on successful timestamp save
+#define MS_DOCK_HOLD_INTERVAL   1000 // how long between intervals that dockui needs to reconfirm dock status
+#define DOCKED_LOOP_COUNT       (MS_DOCK_HOLD_INTERVAL/MS_DELAY_INTERVAL)
+
+#define MS_LED_FLASH_INTERVAL   250  // delay in ms used to flash the LED on successful timestamp save
 
 /***********************
  * Function Definitions

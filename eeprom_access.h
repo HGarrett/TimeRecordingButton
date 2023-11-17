@@ -14,14 +14,16 @@ extern "C" {
 
 #include <stdint.h>
 
+#define EEPROM_MS_DELAY              2
 #define EEPROM_START_ADDRESS         0x7000
 #define EEPROM_DEFAULT_NVMADRH       0x70
 #define EEPROM_START_ADDRESS_NVMADRH EEPROM_DEFAULT_NVMADRH
 #define EEPROM_START_ADDRESS_NVMADRL 0x00
 
-uint8_t EEPROM_ReadByte(uint8_t eeprom_address);
-void    EEPROM_EraseByte(uint8_t eeprom_address);
-void    EEPROM_WriteByte(uint8_t eeprom_address, uint8_t eeprom_data);
+uint8_t Eeprom_ReadByte(uint8_t eeprom_address);
+void    Eeprom_WriteByte(uint8_t eeprom_address, uint8_t eeprom_data);
+void    Eeprom_EraseByte(uint8_t eeprom_address);
+void    Eeprom_EraseAll(void);
 
 #ifdef	__cplusplus
 }

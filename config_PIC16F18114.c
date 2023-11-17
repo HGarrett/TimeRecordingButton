@@ -13,8 +13,13 @@ void Config_RuntimeConfig(void) {
     PORTA  = 0x00; // Clear PORTA
     LATA   = 0x00; // Clear Data Latch
     ANSELA = 0x00; // Set all pins to digital
-    TRISA  = 0x10; // RA4 is an input, everything else is an output
     WPUA   = 0x00; // Weak pull up disabled on all pins
+    
+    TRISA  = 0x00; // Make sure everything is an output then...
+    TRISAbits.TRISA2 = 1; // RA2 is RX for UART
+    TRISAbits.TRISA4 = 1; // Default RA4 setting is input for button
+                          // but it is also our UART TX, (see Uart_TxEnable)
+                          // so will change default setting during operation
 
 //    // Disable modules for lowest power possible
 //    // All modules are on by default

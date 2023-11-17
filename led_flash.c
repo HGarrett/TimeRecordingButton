@@ -13,7 +13,7 @@ void LED_Flash_ProgramSuccess(void) {
     uint8_t loop = 0;
     
     // LED flash implying program success
-    for(loop = 0; loop++; loop < 3) {
+    for(loop = 0; loop < 6; loop++) {
         // toggle LED 3 times
         LED_PIN = !LED_PIN;
         __delay_ms(MS_LED_FLASH_INTERVAL);
