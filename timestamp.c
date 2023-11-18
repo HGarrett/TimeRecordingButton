@@ -13,8 +13,8 @@
 
 void Timestamp_SetupTimer(void) {
     // TMR0 Settings
-    T0CON0 = 0xD1; // TMR0 Enabled, 16-bit timer, 1:2 Post-scaler
-    T0CON1 = 0x88; // Clock source LFINTOSC, ASYNC is disabled, Pre-scaler 1:256
+    T0CON0 = 0xD0; // TMR0 Enabled, 16-bit timer, 1:1 Post-scaler
+    T0CON1 = 0x8F; // Clock source LFINTOSC, ASYNC is disabled, Pre-scaler 1:32768 (1 second per tick in LFINTOSC mode)
 
     // EEPROM setup for timestamp non-volatile storage
     Timestamp_ResetPointerAddress();
@@ -44,7 +44,7 @@ uint8_t Timestamp_IncreaseTimerOverflowCounter(void) {
     return current_timer_overflow_count;
 }
 
-void Timestamp_Save(uint8_t timer_bits_high, uint8_t timer_bits_low, uint8_t overflow) {
+void Timestamp_Save(uint8_t timer_bits_low, uint8_t timer_bits_high, uint8_t overflow) {
     uint8_t current_timestamp_list_pointer = 0;
     uint8_t current_timer_overflow_count   = 0;
     

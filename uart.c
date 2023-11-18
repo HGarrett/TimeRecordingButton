@@ -92,8 +92,8 @@ void Uart_ResetAndCalibrate(void) {
     
     // save new timestamp
     tmr_overflow = TIMER_INTERRUPT_FLAG;
-    tmr_high     = TMR0H;
     tmr_low      = TMR0L;
+    tmr_high     = TMR0H;
     
     // transmit the new timestamp to dockui for calibration
     Uart_Tx(tmr_high);
@@ -101,7 +101,7 @@ void Uart_ResetAndCalibrate(void) {
     
     Timestamp_ResetPointerAddress();
     Timestamp_ResetTimerOverflowCounter();
-    Timestamp_Save(tmr_high, tmr_low, tmr_overflow);
+    Timestamp_Save(tmr_low, tmr_high, tmr_overflow);
     
     Uart_Tx(UART_SUCCESS);
 }
@@ -113,14 +113,14 @@ void Uart_WriteTestTimestamp(void) {
     
     // save new timestamp
     tmr_overflow = TIMER_INTERRUPT_FLAG;
-    tmr_high     = TMR0H;
     tmr_low      = TMR0L;
+    tmr_high     = TMR0H;
 
     // transmit the new timestamp to dockui for calibration
     Uart_Tx(tmr_high);
     Uart_Tx(tmr_low);
     
-    Timestamp_Save(tmr_high, tmr_low, tmr_overflow);
+    Timestamp_Save(tmr_low, tmr_high, tmr_overflow);
     
     Uart_Tx(UART_SUCCESS);
 }

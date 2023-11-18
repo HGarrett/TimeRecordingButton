@@ -35,8 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
-build/*
-dist/*
+build/
+dist/
 
 # Debug files
 *.dSYM/
@@ -62,3 +62,6 @@ nbproject/private/
 # KiCAD Private Files
 KiCAD_EDA/~TimeRecordingButton.kicad_sch.lck
 KiCAD_EDA/TimeRecordingButton-backups/
+
+# VS Project Files
+.vs/

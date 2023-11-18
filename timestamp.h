@@ -27,7 +27,7 @@ void    Timestamp_SetupTimer(void);
 void    Timestamp_ResetPointerAddress(void);
 void    Timestamp_ResetTimerOverflowCounter(void);
 uint8_t Timestamp_IncreaseTimerOverflowCounter(void);
-void    Timestamp_Save(uint8_t timer_bits_high, uint8_t timer_bits_low, uint8_t overflow);
+void    Timestamp_Save(uint8_t timer_bits_low, uint8_t timer_bits_high, uint8_t overflow);
 
 #ifdef	__cplusplus
 }

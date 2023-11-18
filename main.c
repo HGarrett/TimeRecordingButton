@@ -56,7 +56,7 @@ void main(void) {
             // save a timestamp
             if(button_loop_counter > BUTTON_LOOP_COUNT) {
                 // run save code
-                Timestamp_Save(TMR0H, TMR0L, TIMER_INTERRUPT_FLAG);
+                Timestamp_Save(TMR0L, TMR0H, TIMER_INTERRUPT_FLAG);
                 // implies success if previous function returns
                 LED_Flash_ProgramSuccess();
 
