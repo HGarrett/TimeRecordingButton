@@ -791,7 +791,7 @@
     (property "Value" "Battery" (at 139.7 41.91 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "CustomFootprints:JST_XH_B2B-XH-A_1x02_P2.50mm_SideMount_B" (at 134.62 41.91 0)
+    (property "Footprint" "Connector_JST:JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical" (at 134.62 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 134.62 41.91 0)

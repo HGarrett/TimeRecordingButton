@@ -35,8 +35,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 4.3,
-          "width": 0.3333
+          "height": 1.55,
+          "width": 0.6
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -45,7 +45,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.02
         }
       },
       "diff_pair_dimensions": [],
@@ -75,7 +75,7 @@
         "items_not_allowed": "error",
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
-        "lib_footprint_mismatch": "warning",
+        "lib_footprint_mismatch": "ignore",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "missing_courtyard": "ignore",
@@ -392,7 +392,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "TimeRecordingButton.kicad_pro",
+    "filename": "TimeRecordingButton_v2.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -428,7 +428,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "TimeRecordingButton.step",
+      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -469,7 +469,7 @@
   },
   "sheets": [
     [
-      "0ac296d1-dc43-4655-a840-631d090b51c8",
+      "950c7b92-d58c-40cd-8ccc-c5303654243b",
       ""
     ]
   ],
