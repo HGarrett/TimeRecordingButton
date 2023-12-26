@@ -18,12 +18,12 @@ extern "C" {
     
 #define TIMER_INTERRUPT_FLAG              TMR0IF
 
-#define TIMESTAMP_CURRENT_ADDRESS_POINTER EEPROM_START_ADDRESS_NVMADRL
+#define TIMESTAMP_CURRENT_ADDRESS_POINTER (EEPROM_STATUS_BYTE+1)
 #define TIMESTAMP_OVERFLOW_LOOP_COUNTER   (TIMESTAMP_CURRENT_ADDRESS_POINTER+1)
 #define TIMESTAMP_START_ADDRESS           (TIMESTAMP_OVERFLOW_LOOP_COUNTER+1)
 #define TIMESTAMP_MAX_ADDRESS_POINTER     (EEPROM_SIZE-2)
 
-void    Timestamp_SetupTimer(void);
+void    Timestamp_Init(void);
 void    Timestamp_ResetPointerAddress(void);
 void    Timestamp_ResetTimerOverflowCounter(void);
 uint8_t Timestamp_IncreaseTimerOverflowCounter(void);

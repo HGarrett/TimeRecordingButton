@@ -12,8 +12,10 @@
 extern "C" {
 #endif
 
+#include "constants.h"
+    
 void LED_Flash_ProgramSuccess(void);
-void LED_Flash_Error(void); // Does not return
+void LED_Flash_Error(status_codes_t status_code); // Does not return
 
 #ifdef	__cplusplus
 }

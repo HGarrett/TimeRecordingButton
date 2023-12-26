@@ -15,13 +15,16 @@ extern "C" {
 #define BAUD_RATE 600
     
 // UART Commands
-#define UART_DOCKED          0x64 // d
-#define UART_SUCCESS         0x73 // s
-#define UART_DONE            0x78 // x
-#define UART_TRANSFER_START  0x74 // t
-#define UART_TRANSFER_END    0x65 // e
-#define UART_CALIBRATE       0x63 // c
-#define UART_WRITE_TEST_TIME 0x77 // w
+typedef enum {
+    UART_CALIBRATE =       0x63, // c
+    UART_DOCKED =          0x64, // d
+    UART_TRANSFER_END =    0x65, // e
+    UART_SUCCESS =         0x73, // s
+    UART_TRANSFER_START =  0x74, // t
+    UART_WRITE_TEST_TIME = 0x77, // w
+    UART_DONE =            0x78, // x
+    UART_CALIBRATION_FAILED,
+} uart_commands_t; 
 
 void    Uart_Init(void);
 void    Uart_TxEnable(void);

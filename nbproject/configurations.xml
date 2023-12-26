@@ -24,6 +24,11 @@
       <itemPath>led_flash.h</itemPath>
       <itemPath>uart.c</itemPath>
       <itemPath>uart.h</itemPath>
+      <itemPath>constants.h</itemPath>
+      <itemPath>utils.c</itemPath>
+      <itemPath>core.c</itemPath>
+      <itemPath>utils.h</itemPath>
+      <itemPath>interrupts.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -189,6 +194,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-fff"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/hilla/Dropbox/UnderDevelopment/TimeRecordingButton/debug/default/default_ptg"/>
         <property key="programmerToGoImageName" value="default_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -748,6 +755,8 @@
         <property key="periphComp5.gte" value="gt"/>
         <property key="periphComp6.gte" value="gt"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/hilla/Dropbox/UnderDevelopment/TimeRecordingButton/debug/default/default_ptg"/>
         <property key="programmerToGoImageName" value="default_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

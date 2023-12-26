@@ -7,18 +7,17 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "constants.h"
 #include "timestamp.h"
 #include "eeprom_access.h"
 #include "led_flash.h"
 
-void Timestamp_SetupTimer(void) {
+void Timestamp_Init(void) {
+    // uint8_t current_address_pointer = 0xFF;
+    
     // TMR0 Settings
     T0CON0 = 0xD0; // TMR0 Enabled, 16-bit timer, 1:1 Post-scaler
     T0CON1 = 0x8F; // Clock source LFINTOSC, ASYNC is disabled, Pre-scaler 1:32768 (1 second per tick in LFINTOSC mode)
-
-    // EEPROM setup for timestamp non-volatile storage
-    Timestamp_ResetPointerAddress();
-    Timestamp_ResetTimerOverflowCounter();
 }
 
 void Timestamp_ResetPointerAddress(void) {
@@ -44,9 +43,14 @@ uint8_t Timestamp_IncreaseTimerOverflowCounter(void) {
     return current_timer_overflow_count;
 }
 
-void Timestamp_Save(uint8_t timer_bits_low, uint8_t timer_bits_high, uint8_t overflow) {
+error_codes_t Timestamp_Save(uint8_t timer_bits_low, uint8_t timer_bits_high, uint8_t overflow, uint8_t override) {
     uint8_t current_timestamp_list_pointer = 0;
     uint8_t current_timer_overflow_count   = 0;
+    nvm_status_codes_t current_status      = NULL;
+
+    // check that the nvm is in the right state for recording
+    if(!override && Utils_NvmReadStatus() != ) {
+    }
     
     // if the overflow flag is true, increase counter before save
     if(overflow) {
@@ -68,9 +72,12 @@ void Timestamp_Save(uint8_t timer_bits_low, uint8_t timer_bits_high, uint8_t ove
     
     // write new end address to TIMESTAMP_END_ADDRESS_POINTER
     Eeprom_WriteByte(TIMESTAMP_CURRENT_ADDRESS_POINTER, current_timestamp_list_pointer);
+
+    // TODO @hagarrett - add status data stored and max reached
     
-    // If at max address to save a timestamp, hang forever and flash LED
+    // If at max address to save a timestamp, write status code to NVM, hang forever and flash LED
     if(current_timestamp_list_pointer >= TIMESTAMP_MAX_ADDRESS_POINTER) {
-        LED_Flash_Error(); // does not return
+        Eeprom_WriteByte(EEPROM_STATUS_BYTE, STATUS_CODE_TIMESTAMP_MAX_ERROR);
+        LED_Flash_Error(STATUS_CODE_TIMESTAMP_MAX_ERROR); // does not return
     }
 }

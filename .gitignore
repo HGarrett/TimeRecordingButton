@@ -62,6 +62,13 @@ nbproject/private/
 # KiCAD Private Files
 KiCAD_EDA/~TimeRecordingButton.kicad_sch.lck
 KiCAD_EDA/TimeRecordingButton-backups/
+KiCAD_EDA/v2/TimeRecordingButton_v2/TimeRecordingButton_v2-backups/
 
 # VS Project Files
 .vs/
+
+# VScode Project Files
+.vscode/
+
+# temp
+TimeRecordingButtonUI/

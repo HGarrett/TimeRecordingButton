@@ -19,6 +19,8 @@ extern "C" {
 #define EEPROM_DEFAULT_NVMADRH       0x70
 #define EEPROM_START_ADDRESS_NVMADRH EEPROM_DEFAULT_NVMADRH
 #define EEPROM_START_ADDRESS_NVMADRL 0x00
+#define EEPROM_ERASED_BYTE           0xFF
+#define EEPROM_STATUS_BYTE           EEPROM_START_ADDRESS_NVMADRL
 
 uint8_t Eeprom_ReadByte(uint8_t eeprom_address);
 void    Eeprom_WriteByte(uint8_t eeprom_address, uint8_t eeprom_data);

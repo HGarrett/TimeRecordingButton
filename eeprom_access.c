@@ -8,6 +8,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "config_PIC16F18114.h"
+#include "constants.h"
 #include "eeprom_access.h"
 #include "led_flash.h"
 
@@ -40,7 +41,7 @@ void Eeprom_WriteByte(uint8_t eeprom_address, uint8_t eeprom_data) {
     
     // Verify byte write operation success, if error hang in LED flash state
     if (NVMCON1bits.WRERR) {
-        LED_Flash_Error(); // does not return
+        LED_Flash_Error(EEPROM_ERROR_CODE_WRITE_ERROR); // does not return
     }
 }
 
@@ -64,7 +65,7 @@ void Eeprom_EraseByte(uint8_t eeprom_address) {
     
     // Verify byte erase operation success, if error hang in LED flash state
     if (NVMCON1bits.WRERR) {
-        LED_Flash_Error(); // does not return
+        LED_Flash_Error(EEPROM_ERROR_CODE_ERASE_ERROR); // does not return
     }
 }
 

@@ -18,14 +18,25 @@ void Uart_Init(void) {
     RA4PPS = 0x13; // Set RA4 PPS to TX1 for UART Async output
 
     // with the low power internal OSC, we have to use high speed, 16-bit mode
-    TX1STAbits.BRGH = 1;
+    TX1STAbits.BRGH    = 1;
     BAUD1CONbits.BRG16 = 1;
-    SP1BRG = ( _XTAL_FREQ / (4 * BAUD_RATE) ) - 1;
+    SP1BRG             = ( _XTAL_FREQ / (4 * BAUD_RATE) ) - 1;
 
     // UART registers to set up ASYNC mode
     TX1STAbits.SYNC = 0; // Async mode
     RC1STAbits.CREN = 1; // Continuous Receive Enable
     RC1STAbits.SPEN = 1; // Serial Port Enable
+
+    // Enable RX interrupt
+    Uart_EnableRxInterrupts();
+}
+
+void Uart_DisableRxInterrupts(void) {
+    PIEbits.RC1IE = 0;
+}
+
+void Uart_EnableRxInterrupts(void) {
+    PIEbits.RC1IE = 1;
 }
 
 void Uart_TxEnable(void) {
@@ -79,17 +90,37 @@ void Uart_TransferEeprom(void) {
         Uart_Tx(Eeprom_ReadByte(eeprom_address));
     }
     
+    Utils_NvmWriteStatus(NVM_STATUS_CODE_DATA_READ);
+
     Uart_Tx(UART_SUCCESS);
 }
 
-void Uart_ResetAndCalibrate(void) {
+void Uart_Reset(void) {    
+    // erase eeprom
+    Eeprom_EraseAll();
+    
+    Timestamp_ResetPointerAddress();
+    Timestamp_ResetTimerOverflowCounter();
+
+    Utils_NvmWriteStatus(NVM_STATUS_CODE_INIT);
+    
+    Uart_Tx(UART_SUCCESS);
+}
+
+void Uart_Calibrate(void) {
+    nvm_status_codes_t current_status = NULL;
     uint8_t tmr_overflow;
     uint8_t tmr_high;
     uint8_t tmr_low;
     
-    // erase eeprom
-    Eeprom_EraseAll();
+    // check current status is init, and ready for calibration
+    current_status = Utils_NvmReadStatus();
     
+    if(current_status != NVM_STATUS_CODE_INIT) {
+        Uart_Tx(ERROR_CODE_UART_CALIBRATION_FAILED);
+        return;
+    }
+
     // save new timestamp
     tmr_overflow = TIMER_INTERRUPT_FLAG;
     tmr_low      = TMR0L;
@@ -98,10 +129,13 @@ void Uart_ResetAndCalibrate(void) {
     // transmit the new timestamp to dockui for calibration
     Uart_Tx(tmr_high);
     Uart_Tx(tmr_low);
-    
-    Timestamp_ResetPointerAddress();
-    Timestamp_ResetTimerOverflowCounter();
-    Timestamp_Save(tmr_low, tmr_high, tmr_overflow);
+
+    if(Timestamp_Save(tmr_low, tmr_high, tmr_overflow, FALSE) != NO_ERROR){
+        Uart_Tx(ERROR_CODE_UART_CALIBRATION_FAILED);
+        return;
+    }
+
+    Utils_NvmWriteStatus(NVM_STATUS_CODE_CALIBRATED);
     
     Uart_Tx(UART_SUCCESS);
 }

@@ -21,6 +21,10 @@ void Config_RuntimeConfig(void) {
                           // but it is also our UART TX, (see Uart_TxEnable)
                           // so will change default setting during operation
 
+    // Enable interrupts
+    INTCONbits.GIE  = 1; // Global Interrupt Enable
+    INTCONbits.PEIE = 1; // Peripheral Interrupt Enable
+
 //    // Disable modules for lowest power possible
 //    // All modules are on by default
 //    // PMD0 leave all modules enabled
