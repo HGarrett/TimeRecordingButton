@@ -1,14 +1,14 @@
- /*
- * MAIN Generated Driver File
- * 
- * @file main.c
- * 
- * @defgroup main MAIN
- * 
- * @brief This is the generated driver implementation file for the MAIN driver.
+/**
+ * I2C Generated Driver Types Header File
  *
- * @version MAIN Driver Version 1.0.0
-*/
+ * @file i2c_host_types.h
+ *
+ * @ingroup i2c_host_interface
+ *
+ * @brief This file contains additional data types for the I2C module.
+ *
+ * @version I2C Driver Version 2.1.0
+ */
 
 /*
 © [2024] Microchip Technology Inc. and its subsidiaries.
@@ -30,34 +30,31 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
-*/
+#ifndef I2C_HOST_TYPES_H
+#define	I2C_HOST_TYPES_H
 
-int main(void)
+/**
+ * @ingroup i2c_host_interface
+ * @enum  i2c_host_error_t
+ * @brief Enumeration for the I2C errors
+ */
+typedef enum
 {
-    SYSTEM_Initialize();
+    I2C_ERROR_NONE,             /**< No error */
+    I2C_ERROR_ADDR_NACK,        /**< Client returned address NACK */
+    I2C_ERROR_DATA_NACK,        /**< Client returned data NACK */
+    I2C_ERROR_BUS_COLLISION,    /**< Bus Collision error */
+} i2c_host_error_t;
 
-    // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
-    // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts 
-    // Use the following macros to: 
+/**
+ * @ingroup i2c_host_interface
+ * @struct i2c_host_transfer_setup_t
+ * @brief Structure for the I2C clock change
+ */
+typedef struct
+{
+  uint32_t clkSpeed;            /**< I2C Clock Speed */
+} i2c_host_transfer_setup_t;
 
-    // Enable the Global Interrupts 
-    INTERRUPT_GlobalInterruptEnable(); 
-
-    // Disable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptDisable(); 
-
-    // Enable the Peripheral Interrupts 
-    INTERRUPT_PeripheralInterruptEnable(); 
-
-    // Disable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptDisable(); 
-
-
-    while(1)
-    {
-    }    
-}
+#endif // end of I2C_HOST_TYPES_H

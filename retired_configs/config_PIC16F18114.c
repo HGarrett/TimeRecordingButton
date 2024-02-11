@@ -6,7 +6,7 @@
  */
 
 #include <xc.h>
-#include "config_PIC16F18114.h"
+#include "config_PIC16F18124.h"
 
 void Config_RuntimeConfig(void) {
     // configuring PORTA

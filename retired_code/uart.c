@@ -7,11 +7,10 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include <pic16f18114.h>
 #include "uart.h"
 #include "eeprom_access.h"
 #include "timestamp.h"
-#include "config_PIC16F18114.h"
+#include "config_PIC16F18124.h"
 
 void Uart_Init(void) {
     RX1PPS = 0x02; // Set RX pin to RA2

@@ -4,6 +4,28 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <logicalFolder name="i2c_host" displayName="i2c_host" projectFiles="true">
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_types.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_interface.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/mssp1.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_event_types.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="system" displayName="system" projectFiles="true">
+          <itemPath>mcc_generated_files/system/system.h</itemPath>
+          <itemPath>mcc_generated_files/system/pins.h</itemPath>
+          <itemPath>mcc_generated_files/system/clock.h</itemPath>
+          <itemPath>mcc_generated_files/system/config_bits.h</itemPath>
+          <itemPath>mcc_generated_files/system/interrupt.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="uart" displayName="uart" projectFiles="true">
+          <itemPath>mcc_generated_files/uart/uart_types.h</itemPath>
+          <itemPath>mcc_generated_files/uart/uart_drv_interface.h</itemPath>
+          <itemPath>mcc_generated_files/uart/eusart1.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -12,28 +34,52 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <logicalFolder name="i2c_host" displayName="i2c_host" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/i2c_host/src/mssp1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="system" displayName="system" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/system/src/interrupt.c</itemPath>
+            <itemPath>mcc_generated_files/system/src/system.c</itemPath>
+            <itemPath>mcc_generated_files/system/src/pins.c</itemPath>
+            <itemPath>mcc_generated_files/system/src/clock.c</itemPath>
+            <itemPath>mcc_generated_files/system/src/config_bits.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="uart" displayName="uart" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/uart/src/eusart1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>todo_tracker</itemPath>
-      <itemPath>config_PIC16F18114.c</itemPath>
-      <itemPath>config_PIC16F18114.h</itemPath>
-      <itemPath>eeprom_access.c</itemPath>
-      <itemPath>eeprom_access.h</itemPath>
+      <itemPath>config_PIC16F18124.c</itemPath>
+      <itemPath>config_PIC16F18124.h</itemPath>
       <itemPath>timestamp.c</itemPath>
       <itemPath>timestamp.h</itemPath>
       <itemPath>led_flash.c</itemPath>
       <itemPath>led_flash.h</itemPath>
-      <itemPath>uart.c</itemPath>
       <itemPath>uart.h</itemPath>
-      <itemPath>constants.h</itemPath>
-      <itemPath>utils.c</itemPath>
-      <itemPath>core.c</itemPath>
-      <itemPath>utils.h</itemPath>
-      <itemPath>interrupts.c</itemPath>
+      <itemPath>retired_code/constants.h</itemPath>
+      <itemPath>retired_code/core.c</itemPath>
+      <itemPath>retired_code/eeprom_access.c</itemPath>
+      <itemPath>retired_code/eeprom_access.h</itemPath>
+      <itemPath>retired_code/interrupts.c</itemPath>
+      <itemPath>retired_code/uart.c</itemPath>
+      <itemPath>retired_code/utils.h</itemPath>
+      <itemPath>retired_code/utils.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>TimeRecordingButton.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -41,10 +87,10 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC16F18114</targetDevice>
+        <targetDevice>PIC16F18124</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PK5Tool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.45</languageToolchainVersion>
         <platform>3</platform>
@@ -194,8 +240,6 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-fff"/>
         <property key="poweroptions.powerenable" value="true"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/hilla/Dropbox/UnderDevelopment/TimeRecordingButton/debug/default/default_ptg"/>
         <property key="programmerToGoImageName" value="default_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -1306,6 +1350,32 @@
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
       </pkob4hybrid>
+      <item path="retired_code/constants.h" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/core.c" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/eeprom_access.c" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/eeprom_access.h" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/interrupts.c" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/uart.c" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/utils.c" ex="true" overriding="false">
+      </item>
+      <item path="retired_code/utils.h" ex="true" overriding="false">
+      </item>
+      <item path="todo_tracker" ex="false" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

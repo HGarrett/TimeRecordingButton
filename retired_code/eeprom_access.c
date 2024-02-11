@@ -7,7 +7,7 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include "config_PIC16F18114.h"
+#include "config_PIC16F18124.h"
 #include "constants.h"
 #include "eeprom_access.h"
 #include "led_flash.h"

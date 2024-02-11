@@ -1,13 +1,13 @@
- /*
- * MAIN Generated Driver File
+/**
+ * CLOCK Generated Driver Source File
  * 
- * @file main.c
+ * @file clock.c
  * 
- * @defgroup main MAIN
+ * @ingroup clockdriver 
  * 
- * @brief This is the generated driver implementation file for the MAIN driver.
+ * @brief This file contains the API prototypes for the Clock driver.
  *
- * @version MAIN Driver Version 1.0.0
+ * @version Driver Version 2.0.3
 */
 
 /*
@@ -30,34 +30,27 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
-*/
+#include <xc.h>
+#include "../clock.h"
 
-int main(void)
+void CLOCK_Initialize(void)
 {
-    SYSTEM_Initialize();
+    // Set the CLOCK CONTROL module to the options selected in the user interface.
+    //NDIV 4; NOSC HFINTOSC; 
+    OSCCON1 = 0x62;
+    //SOSCPWR Low power; CSWHOLD may proceed; 
+    OSCCON3 = 0x0;
+    //EXTOEN disabled; HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; PLLEN disabled; 
+    OSCEN = 0x0;
+    //HFFRQ 4_MHz; 
+    OSCFRQ = 0x2;
+    //TUN undefined; 
+    OSCTUNE = 0x0;
+    //ACTEN disabled; ACTUD disabled; 
+    ACTCON = 0x40;
 
-    // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
-    // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts 
-    // Use the following macros to: 
-
-    // Enable the Global Interrupts 
-    INTERRUPT_GlobalInterruptEnable(); 
-
-    // Disable the Global Interrupts 
-    //INTERRUPT_GlobalInterruptDisable(); 
-
-    // Enable the Peripheral Interrupts 
-    INTERRUPT_PeripheralInterruptEnable(); 
-
-    // Disable the Peripheral Interrupts 
-    //INTERRUPT_PeripheralInterruptDisable(); 
-
-
-    while(1)
-    {
-    }    
 }
+/**
+ End of File
+*/
