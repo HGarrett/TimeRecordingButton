@@ -10,7 +10,7 @@
  * @version UART Driver Version 3.0.0
 */
 /*
-© [2024] Microchip Technology Inc. and its subsidiaries.
+ï¿½ [2024] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -43,7 +43,6 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
    
 /**
   Section: Data Type Definitions
@@ -55,32 +54,31 @@ extern "C" {
  @brief Structure containing the function pointers of UART driver.
 */
 typedef struct {
-void (*Initialize)(void);   
-void (*Deinitialize)(void);
-uint8_t (*Read)(void);
-void (*Write)(uint8_t);
-bool (*IsRxReady)(void);
-bool (*IsTxReady)(void);
-bool (*IsTxDone)(void);
-void (*TransmitEnable)(void);
-void (*TransmitDisable)(void);
-void (*AutoBaudSet)(bool enable);
-bool (*AutoBaudQuery)(void);
-bool (*AutoBaudEventEnableGet)(void);
-void (*BRGCountSet)(uint32_t brgValue);
-uint32_t (*BRGCountGet)(void);
-void (*BaudRateSet)(uint32_t baudRate);
-uint32_t (*BaudRateGet)(void);
-size_t (*ErrorGet)(void);
-void (*TxCompleteCallbackRegister)(void (*CallbackHandler) (void));
-void (*RxCompleteCallbackRegister)(void (*CallbackHandler) (void));
-void (*TxCollisionCallbackRegister)(void (*CallbackHandler) (void));
-void (*FramingErrorCallbackRegister)(void (*CallbackHandler) (void));
-void (*OverrunErrorCallbackRegister)(void (*CallbackHandler) (void));
-void (*ParityErrorCallbackRegister)(void (*CallbackHandler) (void));
-void (*EventCallbackRegister)(void (*CallbackHandler) (void));
-}uart_drv_interface_t;
-
+  void (*Initialize)(void);   
+  void (*Deinitialize)(void);
+  uint8_t (*Read)(void);
+  void (*Write)(uint8_t);
+  bool (*IsRxReady)(void);
+  bool (*IsTxReady)(void);
+  bool (*IsTxDone)(void);
+  void (*TransmitEnable)(void);
+  void (*TransmitDisable)(void);
+  void (*AutoBaudSet)(bool enable);
+  bool (*AutoBaudQuery)(void);
+  bool (*AutoBaudEventEnableGet)(void);
+  void (*BRGCountSet)(uint32_t brgValue);
+  uint32_t (*BRGCountGet)(void);
+  void (*BaudRateSet)(uint32_t baudRate);
+  uint32_t (*BaudRateGet)(void);
+  size_t (*ErrorGet)(void);
+  void (*TxCompleteCallbackRegister)(void (*CallbackHandler) (void));
+  void (*RxCompleteCallbackRegister)(void (*CallbackHandler) (void));
+  void (*TxCollisionCallbackRegister)(void (*CallbackHandler) (void));
+  void (*FramingErrorCallbackRegister)(void (*CallbackHandler) (void));
+  void (*OverrunErrorCallbackRegister)(void (*CallbackHandler) (void));
+  void (*ParityErrorCallbackRegister)(void (*CallbackHandler) (void));
+  void (*EventCallbackRegister)(void (*CallbackHandler) (void));
+} uart_drv_interface_t;
 
 #ifdef	__cplusplus
 }

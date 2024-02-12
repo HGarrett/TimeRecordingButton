@@ -25,11 +25,6 @@
  */
 #define CLI_FLAG_OVERFLOW 0x01u
 
-/**
- * Indicates that live autocompletion is enabled
- */
-#define CLI_FLAG_SCRIPTING_MODE_ENABLED 0x02u
-
 typedef struct EmbeddedCliImpl EmbeddedCliImpl;
 typedef struct FifoBuf FifoBuf;
 

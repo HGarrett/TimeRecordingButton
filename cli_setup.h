@@ -40,6 +40,11 @@ void cli_pass_rx_char(char c);
 /**
  * TODO @hagarrett - add description
 */
+bool cli_get_ready_state(void);
+
+/**
+ * TODO @hagarrett - add description
+*/
 void cli_send_ctype(uint8_t *buffer, size_t size);
 
 /**

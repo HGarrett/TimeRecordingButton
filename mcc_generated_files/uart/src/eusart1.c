@@ -41,10 +41,10 @@
   Section: Macro Declarations
 */
 
-#define EUSART1_TX_BUFFER_SIZE (8) //buffer size should be 2^n
+#define EUSART1_TX_BUFFER_SIZE (32) //buffer size should be 2^n
 #define EUSART1_TX_BUFFER_MASK (EUSART1_TX_BUFFER_SIZE - 1) 
 
-#define EUSART1_RX_BUFFER_SIZE (8) //buffer size should be 2^n
+#define EUSART1_RX_BUFFER_SIZE (32) //buffer size should be 2^n
 #define EUSART1_RX_BUFFER_MASK (EUSART1_RX_BUFFER_SIZE - 1)
 
 /**
@@ -88,8 +88,7 @@ volatile uint8_t eusart1TxBufferRemaining;
 
 static volatile uint8_t eusart1RxHead = 0;
 static volatile uint8_t eusart1RxTail = 0;
-// Going to try to just dump values until cli is enabled...
-// static volatile uint8_t eusart1RxBuffer[EUSART1_RX_BUFFER_SIZE];
+static volatile uint8_t eusart1RxBuffer[EUSART1_RX_BUFFER_SIZE];
 static volatile eusart1_status_t eusart1RxStatusBuffer[EUSART1_RX_BUFFER_SIZE];
 volatile uint8_t eusart1RxCount;
 
@@ -273,25 +272,27 @@ size_t EUSART1_ErrorGet(void)
 
 uint8_t EUSART1_Read(void)
 {
-// Going to try to just dump values until cli is enabled...
     uint8_t readValue  = 0;
-    // uint8_t tempRxTail;
+    uint8_t tempRxTail;
     
-    // readValue = eusart1RxBuffer[eusart1RxTail];
+    // this is not the right place to read from if cli is ready
+    if(!cli_get_ready_state()) {
+        readValue = eusart1RxBuffer[eusart1RxTail];
 
-    // tempRxTail = (eusart1RxTail + 1) & EUSART1_RX_BUFFER_MASK; // Buffer size of RX should be in the 2^n
-    
-    // eusart1RxTail = tempRxTail;
+        tempRxTail = (eusart1RxTail + 1) & EUSART1_RX_BUFFER_MASK; // Buffer size of RX should be in the 2^n
+        
+        eusart1RxTail = tempRxTail;
 
-    // eusart1RxLastError = eusart1RxStatusBuffer[eusart1RxTail];
-    
+        eusart1RxLastError = eusart1RxStatusBuffer[eusart1RxTail];
+        
+        PIE4bits.RC1IE = 0; 
+        if(eusart1RxCount != 0)
+        {
+            eusart1RxCount--;
+        }
+        PIE4bits.RC1IE = 1;
+    }
 
-    // PIE4bits.RC1IE = 0; 
-    // if(eusart1RxCount != 0)
-    // {
-    //     eusart1RxCount--;
-    // }
-    // PIE4bits.RC1IE = 1;
     return readValue;
 }
 
@@ -329,11 +330,14 @@ void EUSART1_ReceiveISR(void)
 	} 
     else
     {
-        cli_pass_rx_char((char)regValue);
-
-        // Going to try to just dump values until cli is enabled...
-        // eusart1RxBuffer[eusart1RxHead] = regValue;
-		eusart1RxHead = tempRxHead;
+        // if cli is not ready, store it in local rx buff for processing
+        if(cli_get_ready_state()) {
+            cli_pass_rx_char((char)regValue);
+        }
+        else {
+            eusart1RxBuffer[eusart1RxHead] = regValue;
+        }
+        eusart1RxHead = tempRxHead;
 		eusart1RxCount++;
 	}   
 }

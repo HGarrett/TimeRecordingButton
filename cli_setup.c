@@ -29,7 +29,7 @@
 static EmbeddedCli *cli;
 static uint8_t cliBuffer[CLI_BUFFER_SIZE];
 
-// Bool to disable the interrupts, if CLI is not yet ready.
+// Don't process chars if CLI is not yet ready.
 static bool cliIsReady = false;
 
 // Write function used in 'setupCli()' to route the chars over UART.
@@ -75,6 +75,10 @@ void cli_pass_rx_char(char c) {
     if (cliIsReady) {
         embeddedCliReceiveChar(cli, c);
     }
+}
+
+bool cli_get_ready_state(void) {
+    return cliIsReady;
 }
 
 void cli_send_ctype(uint8_t *buffer, size_t size) {

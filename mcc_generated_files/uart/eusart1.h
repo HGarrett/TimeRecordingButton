@@ -89,8 +89,6 @@ typedef union {
     size_t status;            /**<Group byte for status errors*/
 } eusart1_status_t;
 
-
-
 /**
  Section: Data Type Definitions
  */
@@ -373,9 +371,7 @@ void EUSART1_RxCompleteCallbackRegister(void (* callbackHandler)(void));
 void EUSART1_ReceiveISR(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
-
     }
-
 #endif
 
 #endif  // EUSART1_H
