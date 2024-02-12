@@ -11,7 +11,7 @@
 */
 
 /*
-© [2024] Microchip Technology Inc. and its subsidiaries.
+ï¿½ [2024] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -31,13 +31,18 @@
     THIS SOFTWARE.
 */
 #include "mcc_generated_files/system/system.h"
+#include "cli_setup.h"
 
 /*
     Main application
 */
 
+#define MS_LED_FLASH_INTERVAL   250
+
 int main(void)
 {
+    // uint8_t button_loop_counter = 0;
+
     SYSTEM_Initialize();
 
     // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts 
@@ -56,8 +61,40 @@ int main(void)
     // Disable the Peripheral Interrupts 
     //INTERRUPT_PeripheralInterruptDisable(); 
 
+    setupCli();
 
     while(1)
     {
+        // __delay_ms(MS_LED_FLASH_INTERVAL);
+        // IO_RC2_Toggle();
+
+        embeddedCliProcess(getCliPointer());
+
+
+        // // ** Loop Variables *******************
+        // button_loop_counter = 0;
+        // // ** End Loop Variables ***************
+        // // ** Button Down Loop *****************
+        // //    This will loop as long as the button 
+        // //    is being held down
+        // while(BUTTON_DOWN) {
+        //     LED_PIN = LED_ON;
+        //     __delay_ms(MS_DELAY_INTERVAL);
+        //     button_loop_counter = button_loop_counter+1;
+            
+        //     // When button is held for complete delay,
+        //     // save a timestamp
+        //     if(button_loop_counter > BUTTON_LOOP_COUNT) {
+        //         // run save code
+        //         Timestamp_Save(TMR0L, TMR0H, TIMER_INTERRUPT_FLAG);
+        //         // implies success if previous function returns
+        //         LED_Flash_ProgramSuccess();
+
+        //         while(BUTTON_DOWN) {
+        //             // while button is still held down after save and LED flash, do nothing
+        //         }
+        //     }
+        // }
+        // // ** End Button Down Loop *************
     }    
 }

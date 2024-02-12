@@ -11,7 +11,7 @@
  */
 
 /*
-© [2024] Microchip Technology Inc. and its subsidiaries.
+ï¿½ [2024] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -33,6 +33,10 @@
 
 #include <xc.h>
 #include "../mssp1.h"
+
+#ifdef VSCODE_PIC
+#include "pic16f18124.h"
+#endif
 
 /* I2C1 event system interfaces */
 static void I2C1_ReadStart(void);
@@ -74,9 +78,25 @@ static i2c_host_event_states_t I2C1_EVENT_STOP(void);
 static i2c_host_event_states_t I2C1_EVENT_RESET(void);
 
 /*
-  Section: Driver Interface
+  Section: RTTC Driver Interface
  */
-const i2c_host_interface_t I2C1_Host = {
+const i2c_host_interface_t MCP7940NT_I2C = {
+    .Initialize = I2C1_Initialize,
+    .Deinitialize = I2C1_Deinitialize,
+    .Write = I2C1_Write,
+    .Read = I2C1_Read,
+    .WriteRead = I2C1_WriteRead,
+    .TransferSetup = NULL,
+    .ErrorGet = I2C1_ErrorGet,
+    .IsBusy = I2C1_IsBusy,
+    .CallbackRegister = I2C1_CallbackRegister,
+    .Tasks = NULL
+};
+
+/*
+  Section: EEPROM Driver Interface
+ */
+const i2c_host_interface_t AT24C16D_I2C = {
     .Initialize = I2C1_Initialize,
     .Deinitialize = I2C1_Deinitialize,
     .Write = I2C1_Write,

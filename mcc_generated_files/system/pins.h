@@ -37,6 +37,10 @@
 
 #include <xc.h>
 
+#ifdef VSCODE_PIC
+#include "pic16f18124.h"
+#endif
+
 #define INPUT   1
 #define OUTPUT  0
 

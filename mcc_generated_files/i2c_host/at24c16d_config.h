@@ -1,13 +1,13 @@
 /**
- * CLOCK Generated Driver Source File
- * 
- * @file clock.c
- * 
- * @ingroup clockdriver 
- * 
- * @brief This file contains the API prototypes for the Clock driver.
+ * AT24CM02 Generated Driver File
  *
- * @version Driver Version 2.0.3
+ * @file at24cm02_config.h
+ * 
+ * @ingroup at24cm02
+ * 
+ * @brief This file contains the AT24CM02 device configuration.
+ *
+ * @version AT24CM02 Driver Version 1.1.1
 */
 
 /*
@@ -31,30 +31,30 @@
     THIS SOFTWARE.
 */
 
-#include <xc.h>
-#include "../clock.h"
-
-#ifdef VSCODE_PIC
-#include "pic16f18124.h"
+#ifndef AT24C16D_CONFIG_H
+#define AT24C16D_CONFIG_H
+ 
+#ifdef __cplusplus
+extern "C" {
 #endif
+ 
+ 
+#define DEVICE_ID 0xA
+ 
+#define GND 0
+#define VCC 1
+#define DEVICE_ADDRS_BIT GND
+ 
+#define EEPROM_W 0
+#define EEPROM_R 1
+#define RW_OPERATION EEPROM_W
+ 
+#define DEVICE_ADDRS_BYTE ((DEVICE_ID << 4) | (DEVICE_ADDRS_BIT << 3) | (0x0 << 2) | RW_OPERATION)
 
-void CLOCK_Initialize(void)
-{
-    // Set the CLOCK CONTROL module to the options selected in the user interface.
-    //NDIV 4; NOSC HFINTOSC; 
-    OSCCON1 = 0x62;
-    //SOSCPWR Low power; CSWHOLD may proceed; 
-    OSCCON3 = 0x0;
-    //EXTOEN disabled; HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; PLLEN disabled; 
-    OSCEN = 0x0;
-    //HFFRQ 4_MHz; 
-    OSCFRQ = 0x2;
-    //TUN undefined; 
-    OSCTUNE = 0x0;
-    //ACTEN disabled; ACTUD disabled; 
-    ACTCON = 0x40;
-
+#define PAGESIZE 16
+ 
+#ifdef __cplusplus
 }
-/**
- End of File
-*/
+#endif
+ 
+#endif /* AT24C16D_CONFIG_H */

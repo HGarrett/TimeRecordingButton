@@ -58,22 +58,16 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
-      <itemPath>todo_tracker</itemPath>
-      <itemPath>config_PIC16F18124.c</itemPath>
-      <itemPath>config_PIC16F18124.h</itemPath>
       <itemPath>timestamp.c</itemPath>
       <itemPath>timestamp.h</itemPath>
       <itemPath>led_flash.c</itemPath>
       <itemPath>led_flash.h</itemPath>
-      <itemPath>uart.h</itemPath>
-      <itemPath>retired_code/constants.h</itemPath>
-      <itemPath>retired_code/core.c</itemPath>
-      <itemPath>retired_code/eeprom_access.c</itemPath>
-      <itemPath>retired_code/eeprom_access.h</itemPath>
-      <itemPath>retired_code/interrupts.c</itemPath>
-      <itemPath>retired_code/uart.c</itemPath>
-      <itemPath>retired_code/utils.h</itemPath>
-      <itemPath>retired_code/utils.c</itemPath>
+      <itemPath>cli_binding.c</itemPath>
+      <itemPath>cli_binding.h</itemPath>
+      <itemPath>cli_setup.c</itemPath>
+      <itemPath>cli_setup.h</itemPath>
+      <itemPath>embedded_cli.c</itemPath>
+      <itemPath>embedded_cli.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -82,6 +76,9 @@
       <itemPath>TimeRecordingButton.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -90,7 +87,7 @@
         <targetDevice>PIC16F18124</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>PK5Tool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.45</languageToolchainVersion>
         <platform>3</platform>
@@ -239,7 +236,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-fff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoImageName" value="default_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -798,7 +795,7 @@
         <property key="periphComp4.gte" value="gt"/>
         <property key="periphComp5.gte" value="gt"/>
         <property key="periphComp6.gte" value="gt"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
                   value="C:/Users/hilla/Dropbox/UnderDevelopment/TimeRecordingButton/debug/default/default_ptg"/>
         <property key="programmerToGoImageName" value="default_ptg"/>
@@ -1350,32 +1347,6 @@
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
       </pkob4hybrid>
-      <item path="retired_code/constants.h" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/core.c" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/eeprom_access.c" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/eeprom_access.h" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/interrupts.c" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/uart.c" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/utils.c" ex="true" overriding="false">
-      </item>
-      <item path="retired_code/utils.h" ex="true" overriding="false">
-      </item>
-      <item path="todo_tracker" ex="false" overriding="false">
-        <HI-TECH-COMP>
-        </HI-TECH-COMP>
-        <HI-TECH-LINK>
-        </HI-TECH-LINK>
-        <XC8-CO>
-        </XC8-CO>
-        <XC8-config-global>
-        </XC8-config-global>
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>
