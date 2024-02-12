@@ -130,8 +130,8 @@ void EUSART1_Initialize(void)
     RC1STA = 0x90; 
     //TX9D 0x0; BRGH hi_speed; SENDB sync_break_complete; SYNC asynchronous; TXEN enabled; TX9 8-bit; CSRC client; 
     TX1STA = 0x26; 
-    //SPBRGL 25; 
-    SP1BRGL = 0x19; 
+    //SPBRGL 34; 
+    SP1BRGL = 0x22; 
     //SPBRGH 0; 
     SP1BRGH = 0x0; 
 
@@ -273,7 +273,7 @@ size_t EUSART1_ErrorGet(void)
 
 uint8_t EUSART1_Read(void)
 {
-    // Going to try to just dump values until cli is enabled...
+// Going to try to just dump values until cli is enabled...
     uint8_t readValue  = 0;
     // uint8_t tempRxTail;
     
@@ -284,7 +284,7 @@ uint8_t EUSART1_Read(void)
     // eusart1RxTail = tempRxTail;
 
     // eusart1RxLastError = eusart1RxStatusBuffer[eusart1RxTail];
-
+    
 
     // PIE4bits.RC1IE = 0; 
     // if(eusart1RxCount != 0)
