@@ -45,7 +45,7 @@ void CLOCK_Initialize(void)
     OSCCON1 = 0x60;
     //SOSCPWR Low power; CSWHOLD may proceed; 
     OSCCON3 = 0x0;
-    //EXTOEN disabled; HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; PLLEN disabled; 
+    //EXTOEN disabled; HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; 
     OSCEN = 0x0;
     //HFFRQ 16_MHz; 
     OSCFRQ = 0x4;

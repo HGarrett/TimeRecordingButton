@@ -47,6 +47,9 @@ debug/*
 *.log
 *.log.inx
 
+# Saleae trace files
+*.sal
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -60,7 +63,7 @@ dkms.conf
 nbproject/private/
 
 # KiCAD Private Files
-KiCAD_EDA/~TimeRecordingButton.kicad_sch.lck
+*.lck
 KiCAD_EDA/TimeRecordingButton-backups/
 KiCAD_EDA/v2/TimeRecordingButton_v2/TimeRecordingButton_v2-backups/
 
